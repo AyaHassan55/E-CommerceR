@@ -20,7 +20,7 @@ export default function App() {
         <CssBaseline />
         <Header1 />
         <Header2 />
-        {/* <Header3 /> */}
+        <Header3 />
       </ThemeProvider>
     </ColorModeContext.Provider>
   );

@@ -1,7 +1,7 @@
 import { ExpandMore, ShoppingCartOutlined } from "@mui/icons-material";
 import { Badge, Container, IconButton, ListItem, Stack } from "@mui/material";
 
-import { styled, alpha, useTheme } from "@mui/material/styles";
+import { styled, useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
@@ -14,12 +14,14 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { useState } from "react";
 
+// -------------------------------------------------------------------------------
 const options = ["All Categories", "Car", "Cloths", "Electronics"];
 export default function Header2() {
   // ------Menu List-------------------------------------------
   const [anchorEl, setAnchorEl] = useState(null);
-  const [selectedIndex, setSelectedIndex] = useState(1);
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const open = Boolean(anchorEl);
+
   const handleClickListItem = (event) => {
     const target = event.currentTarget;
     // نستخدم setTimeout علشان نسمح ل React يحدث الـ DOM قبل ما نفتحه
@@ -58,7 +60,9 @@ export default function Header2() {
 
     zIndex: "10",
 
-    "&:hover": { backgroundColor: alpha(theme.palette.common.white, 0.25) },
+    "&:hover": {
+      border: "1px solid #333",
+    },
     marginRight: theme.spacing(2),
     marginLeft: 0,
     minWidth: "300px",
