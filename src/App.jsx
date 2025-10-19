@@ -3,7 +3,7 @@ import Header1 from "./Components/Header/Header1";
 import Header2 from "./Components/Header/Header2";
 import Header3 from "./Components/Header/Header3";
 
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Hero from "./Components/Hero/Hero";
 
@@ -22,7 +22,14 @@ export default function App() {
         <Header1 />
         <Header2 />
         <Header3 />
-        <Hero />
+        <Box
+          bgcolor={
+            // @ts-ignore
+            theme.palette.bgWeb.main
+          }
+        >
+          <Hero />
+        </Box>
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
