@@ -20,7 +20,7 @@ export default function Main() {
   const [value] = useState(2);
 
   return (
-    <Container sx={{ mt: 9 }}>
+    <Container sx={{ mt: 9, pb: 9 }}>
       <Stack
         direction={"row"}
         alignItems={"center"}
