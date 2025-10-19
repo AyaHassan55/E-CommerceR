@@ -29,18 +29,6 @@ export default function Header2() {
       setAnchorEl(target);
     }, 0);
   };
-  //   const handleClickListItem = (event) => {
-  //     console.log("👉 Click event.target:", event.currentTarget);
-  //     console.log(
-  //       "👉 event.currentTarget instanceof HTMLElement:",
-  //       event.currentTarget instanceof HTMLElement
-  //     );
-  //     console.log(
-  //       "👉 document.body.contains(event.currentTarget):",
-  //       document.body.contains(event.currentTarget)
-  //     );
-  //     setAnchorEl(event.currentTarget);
-  //   };
 
   const handleMenuItemClick = (event, index) => {
     setSelectedIndex(index);
@@ -65,10 +53,10 @@ export default function Header2() {
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
-    minWidth: "300px",
+    width: "266px",
     [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing(3),
-      width: "auto",
+      width: "330px",
     },
   }));
 
