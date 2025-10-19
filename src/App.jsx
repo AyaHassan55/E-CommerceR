@@ -7,6 +7,7 @@ import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Hero from "./Components/Hero/Hero";
 import Main from "./Components/MainContent/main";
+import Footer from "./Components/Footer/Footer";
 
 export default function App() {
   const [theme, colorMode] = useMode();
@@ -32,6 +33,7 @@ export default function App() {
           <Hero />
           <Main />
         </Box>
+        <Footer />
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
