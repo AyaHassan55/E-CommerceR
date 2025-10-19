@@ -34,6 +34,7 @@ const Links = ({ title }) => {
 
           minWidth: "170px",
           display: "none",
+          zIndex: "3",
         }}
       >
         <Paper sx={{ mt: 2 }}>
