@@ -1,4 +1,12 @@
-import { Container, Stack, Box, Typography, useTheme } from "@mui/material";
+import {
+  Container,
+  Stack,
+  Box,
+  Typography,
+  useTheme,
+  Dialog,
+  IconButton,
+} from "@mui/material";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { useState } from "react";
@@ -9,6 +17,8 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Rating from "@mui/material/Rating";
+import { Close } from "@mui/icons-material";
+import ProductDetails from "./ProductDetails";
 
 export default function Main() {
   const [alignment, setAlignment] = useState("left");
@@ -19,6 +29,16 @@ export default function Main() {
   const theme = useTheme();
   const [value] = useState(2);
 
+  // -----------dialog----------------
+  const [open, setOpen] = useState(true);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <Container sx={{ mt: 9, pb: 9 }}>
       <Stack
@@ -122,7 +142,11 @@ export default function Main() {
               </CardContent>
 
               <CardActions sx={{ justifyContent: "space-between" }}>
-                <Button sx={{ textTransform: "capitalize" }} size="small">
+                <Button
+                  onClick={handleClickOpen}
+                  sx={{ textTransform: "capitalize" }}
+                  size="small"
+                >
                   <AddShoppingCartIcon sx={{ mr: 1 }} fontSize="small" />
                   Add to Card
                 </Button>
@@ -132,6 +156,29 @@ export default function Main() {
           );
         })}
       </Stack>
+
+      <Dialog
+        sx={{
+          ".MuiPaper": { xs: { width: "100%", md: 800 }, bgcolor: "#fff" },
+        }}
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <IconButton
+          sx={{
+            ":hover": { rotate: "180deg", transition: ".3s", color: "red" },
+            position: "absolute",
+            top: 0,
+            right: 10,
+          }}
+          onClick={handleClose}
+        >
+          <Close />
+        </IconButton>
+        <ProductDetails />
+      </Dialog>
     </Container>
   );
 }
