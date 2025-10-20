@@ -24,8 +24,9 @@ import { useGetproductByNameQuery } from "../../Redux/product";
 export default function Main() {
   const [alignment, setAlignment] = useState("left");
 
-  const handleAlignment = (event, newAlignment) => {
-    setAlignment(newAlignment);
+  const handleAlignment = (event, newValue) => {
+    setAlignment(newValue);
+    setMyData(newValue);
   };
   const theme = useTheme();
   // const [value] = useState(2);
@@ -42,13 +43,19 @@ export default function Main() {
   };
 
   // -----------Redux----------------
-  const { data, isLoading, error } = useGetproductByNameQuery(
-    "products?populate=*"
-  );
+  const allProducts = "products?populate=*";
+  const menCategoryApi =
+    "products?populate=*&filters[productCategory][$eq]=men";
+  const womenCategoryApi =
+    "products?populate=*&filters[productCategory][$eq]=women";
+
+  const [myData, setMyData] = useState(allProducts);
+  const { data, isLoading, error } = useGetproductByNameQuery(myData);
   if (isLoading) {
     return <Typography variant="h6">Loading.......</Typography>;
   }
   if (error) {
+    // @ts-ignore
     return <Typography variant="h6">{error.message}</Typography>;
   }
   if (data) {
@@ -86,7 +93,7 @@ export default function Main() {
             <ToggleButton
               sx={{ color: theme.palette.text.primary }}
               className="myButton"
-              value="left"
+              value={allProducts}
               aria-label="left aligned"
             >
               All Category
@@ -94,7 +101,7 @@ export default function Main() {
             <ToggleButton
               sx={{ color: theme.palette.text.primary }}
               className="myButton"
-              value="center"
+              value={menCategoryApi}
               aria-label="centered"
             >
               Men Categories
@@ -102,7 +109,7 @@ export default function Main() {
             <ToggleButton
               sx={{ color: theme.palette.text.primary }}
               className="myButton"
-              value="right"
+              value={womenCategoryApi}
               aria-label="right aligned"
             >
               Women Categories
