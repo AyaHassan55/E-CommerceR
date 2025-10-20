@@ -78,7 +78,7 @@ export default function Main() {
           {/*----------------------- sec Box--------------------------------- */}
           <ToggleButtonGroup
             color="error"
-            value={alignment}
+            value={myData}
             exclusive
             onChange={handleAlignment}
             aria-label="text alignment"
